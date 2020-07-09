@@ -1,0 +1,26 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eureka_ip}:8761/eureka/
+    registryFetchIntervalSeconds: 1
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    preferIpAddress: true
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+    # Initially launch the service with the status of OUT_OF_SERVICE
+    initial-status: UP
+    
+
+management:
+  security:
+    enabled: false   
+    
+
+security:
+  basic:
+    enabled: false
+  user:
+    name: user
+    password: user

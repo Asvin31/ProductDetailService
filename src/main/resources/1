@@ -1,0 +1,10 @@
+spring.jackson.serialization.INDENT_OUTPUT=true
+spring.data.mongodb.host=35.192.31.206
+spring.data.mongodb.port=27017
+spring.data.mongodb.database=buyMartBrowse
+spring.application.name=bmProductDetails
+spring.data.mongodb.repositories.enabled=true
+server.port=9085
+useNameOnlyFlag=true
+endpoints.shutdown.sensitive=false
+endpoints.shutdown.enabled=true
