@@ -32,6 +32,7 @@ public class bmProduct {
 	private Warranty warranty;
 	private RecommendedProductBean recommendedproduct;
 	private String image;
+	private String brandName;
 
 	public bmProduct(String catentry_id, String name, String shortProductDesc, String make, String sku, String category,
 			String sub_category, String thumb_image, String full_image, String tumb_image, String large_image,
@@ -51,7 +52,7 @@ public class bmProduct {
 		this.details = details;
 		this.productdetails = productdetails;
 		this.specification = specification;
-		this.warranty = warranty;
+		this.warranty = warrant;
 		this.recommendedproduct = recommendedproduct;
 		this.image = image;
 
