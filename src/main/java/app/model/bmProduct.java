@@ -32,7 +32,7 @@ public class bmProduct {
 	private Warranty warranty;
 	private RecommendedProductBean recommendedproduct;
 	private String image;
-	private String brandName;
+	private String brand;
 
 	public bmProduct(String catentry_id, String name, String shortProductDesc, String make, String sku, String category,
 			String sub_category, String thumb_image, String full_image, String tumb_image, String large_image,
