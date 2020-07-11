@@ -41,10 +41,16 @@ node{
       },
       'Selenium Testing': {
         sh "cd /home/asvin_v/ && sh validate.sh"
-	sh 'echo "${USER}" > output.txt'
+	sh 'echo "${SECURE}" > output.txt'
     	def val = readFile 'output.txt'
-    	echo "${val}"
-    	echo "${val.trim()}"
+	if (!Boolean.parseBoolean(val)){
+		echo "Yes"
+		sh 'export SECURE=true	
+		error("Build failed because of this and that..")
+	}
+	else {
+		echo "No"
+    	}
       }
     )
   }
