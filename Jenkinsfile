@@ -45,7 +45,7 @@ node{
     	def val = readFile 'output.txt'
 	if (!Boolean.parseBoolean(val)){
 		echo "Yes"
-		sh 'export SECURE=true	
+		sh 'export SECURE=true'
 		error("Build failed because of this and that..")
 	}
 	else {
