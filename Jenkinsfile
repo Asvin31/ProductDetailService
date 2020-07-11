@@ -41,7 +41,7 @@ node{
       },
       'Selenium Testing': {
         sh "cd /home/asvin_v/ && sh validate.sh"
-	echo ${env.USER}
+	echo "${env.USER}"
       }
     )
   }
