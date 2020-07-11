@@ -43,10 +43,12 @@ node{
         sh "cd /home/asvin_v/ && sh validate.sh"
 	sh 'echo "${SECURE}" > output.txt'
 	sh 'echo ${SECURE}'
+	sh 'echo ${USER}'
+	sh 'printenv'
     	def val = readFile 'output.txt'
 	if (!Boolean.parseBoolean(val)){
 		echo "Yes"
-		sh 'cd /home/asvin_v/ && source set.sh'
+		sh 'cd /home/asvin_v/ && . ./environment.sh set.sh'
 		error("Build failed because of this and that..")
 	}
 	else {
