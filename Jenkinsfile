@@ -43,6 +43,15 @@ node{
         sh "cd /home/asvin_v/ && sh validate.sh"
 	def str = readProperties  file:'config.properties'
 	echo str.secure
+	if (!Boolean.parseBoolean(str.secure)){
+		echo "Yes"
+		def props = "secure=true"
+		writeFile file: "config.properties", text: props
+		error("Build failed because of this and that..")
+	}
+	else {
+		echo "No"
+    	}
       }
     )
   }
