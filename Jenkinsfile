@@ -42,7 +42,7 @@ node{
       'Selenium Testing': {
         sh "cd /home/asvin_v/ && sh validate.sh"
 	def str = readProperties  file:'config.properties'
-	echo str.message.secure
+	echo str.secure
       }
     )
   }
