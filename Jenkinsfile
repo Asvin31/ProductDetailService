@@ -41,8 +41,7 @@ node{
       },
       'Selenium Testing': {
         sh "cd /home/asvin_v/ && sh validate.sh"
-	def env = System.getenv()
-	println(env['JENKINS_HOME'])
+	def myVar = build.getEnvironment(listener).get('JENKINS_HOME')
       }
     )
   }
