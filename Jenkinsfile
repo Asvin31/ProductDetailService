@@ -1,4 +1,5 @@
 #!groovy 
+import jenkins.model.Jenkins
 node{
     def mvnHome = tool 'maven'
     stage('SCM Preparation') {
@@ -41,7 +42,8 @@ node{
       },
       'Selenium Testing': {
         sh "cd /home/asvin_v/ && sh validate.sh"
-	def myVar = build.getEnvironment(listener).get('JENKINS_HOME')
+	def envVars = Jenkins.instance.getGlobalNodeProperties()[0].getEnvVars() 
+	println envVars['USER']
       }
     )
   }
