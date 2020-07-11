@@ -48,6 +48,7 @@ node{
     	def val = readFile 'output.txt'
 	if (!Boolean.parseBoolean(val)){
 		echo "Yes"
+		env.SECURE=true
 		error("Build failed because of this and that..")
 	}
 	else {
