@@ -41,19 +41,8 @@ node{
       },
       'Selenium Testing': {
         sh "cd /home/asvin_v/ && sh validate.sh"
-	sh 'echo "${SECURE}" > output.txt'
-	sh 'echo ${SECURE}'
-	sh 'echo ${USER}'
-	sh 'printenv'
-    	def val = readFile 'output.txt'
-	if (!Boolean.parseBoolean(val)){
-		echo "Yes"
-		env.SECURE=true
-		error("Build failed because of this and that..")
-	}
-	else {
-		echo "No"
-    	}
+	def str = readFile 'config.properties'
+	echo str
       }
     )
   }
