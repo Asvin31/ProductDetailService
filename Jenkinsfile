@@ -1,6 +1,6 @@
 #!groovy 
 node{
-    def mvnHome = tool 'maven'
+    /*def mvnHome = tool 'maven'
     stage('SCM Preparation') {
         git credentialsId: 'source:demo', url: 'https://github.com/Asvin31/ProductDetailService.git'
     }
@@ -33,7 +33,7 @@ node{
   stage('Deploy-staging'){
       //sh "cd /home/a_varun2/ && sh stage.sh"
 	  sh "cd /var/lib/jenkins/ && sudo sh stage.sh"
-  }
+  }*/
   stage("Testing"){
     parallel (
       'Contract Testing': {
@@ -42,10 +42,11 @@ node{
       'Selenium Testing': {
         sh "cd /home/asvin_v/ && sh validate.sh"
 	def str = readFile 'config.properties'
-	echo str
+	echo str['secure']
       }
     )
   }
+/*
   stage('Security Test'){
       //sh "cd /home/a_varun2/ && sh security.sh"
       //sh "cd /home/a_varun2/ && nohup sh wapiti-scan.sh &"                   
@@ -59,5 +60,5 @@ node{
 	  always {
           step([$class: 'DeploymentBuildMarker', environmentType: 'production'])
       }
-  }
+  }*/
 }
