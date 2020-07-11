@@ -41,12 +41,8 @@ node{
       },
       'Selenium Testing': {
         sh "cd /home/asvin_v/ && sh validate.sh"
-	sh '''
-	set +x
 	sh 'echo "${SECURE}" > output.txt'
     	def val = readFile 'output.txt'
-	set -x 
-        '''
 	if (!Boolean.parseBoolean(val)){
 		echo "Yes"
 		sh 'cd /home/asvin_v/ && source set.sh'
