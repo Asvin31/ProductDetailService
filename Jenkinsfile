@@ -1,6 +1,5 @@
 #!groovy 
 node{
-    withEnv(['value=true']) {
     def mvnHome = tool 'maven'
     stage('SCM Preparation') {
         git credentialsId: 'source:demo', url: 'https://github.com/Asvin31/ProductDetailService.git'
@@ -42,12 +41,8 @@ node{
       },
       'Selenium Testing': {
         sh "cd /home/asvin_v/ && sh validate.sh"
-	      script {
-	      if ${value}{
-		sh 'echo ${value}'
-		sh 'echo ${env.USER}'
-	      }
-	 }
+	def env = System.getenv()
+	println(env['JENKINS_HOME'])
       }
     )
   }
@@ -65,5 +60,4 @@ node{
           step([$class: 'DeploymentBuildMarker', environmentType: 'production'])
       }
   }
-}
 }
