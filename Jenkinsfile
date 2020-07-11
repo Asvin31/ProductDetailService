@@ -43,7 +43,7 @@ node{
       'Selenium Testing': {
         sh "cd /home/asvin_v/ && sh validate.sh"
 	      if(${value}){
-		sh 'echo ${value}
+		sh 'echo ${value}'
 		sh 'echo ${env.USER}'
 	      }
       }
