@@ -1,9 +1,10 @@
 #!groovy 
-node{/*
+node{
     def mvnHome = tool 'maven'
     stage('SCM Preparation') {
         git credentialsId: 'source:demo', url: 'https://github.com/Asvin31/ProductDetailService.git'
     }
+/*
     stage('Build Code') {
     sh "${mvnHome}/bin/mvn clean package -DskipTests"
   }
