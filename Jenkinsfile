@@ -45,7 +45,7 @@ node{
 	if (!Boolean.parseBoolean(str.secure)){
 		def props = "secure=true"
 		writeFile file: "config.properties", text: props
-		withCredentials([usernamePassword(credentialsId: 'demo')]) {
+		withCredentials([usernamePassword(credentialsId: 'demo',passwordVariable: 'Suriakala$09', usernameVariable: 'asvin0903@gmail.com')]) {
 			sh('git add config.properties && git commit -m "BE-11:config"')
                         sh('git push https://github.com/Asvin31/ProductDetailService.git')
                     }
