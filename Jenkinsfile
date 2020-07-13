@@ -1,5 +1,5 @@
 #!groovy 
-node{
+node{/*
     def mvnHome = tool 'maven'
     stage('SCM Preparation') {
         git credentialsId: 'source:demo', url: 'https://github.com/Asvin31/ProductDetailService.git'
@@ -33,7 +33,7 @@ node{
   stage('Deploy-staging'){
       //sh "cd /home/a_varun2/ && sh stage.sh"
 	  sh "cd /var/lib/jenkins/ && sudo sh stage.sh"
-  }
+  }*/
   stage("Testing"){
     parallel (
       'Contract Testing': {
@@ -44,6 +44,10 @@ node{
 	if (!Boolean.parseBoolean(str.secure)){
 		def props = "secure=true"
 		writeFile file: "config.properties", text: props
+		withCredentials([usernamePassword(credentialsId: 'demo')]) {
+			sh('git add config.properties && git commit -m "BE-11:config"')
+                        sh('git push https://github.com/Asvin31/ProductDetailService.git')
+                    }
 		error("Selenium Test Failed..")
 	}
 	else {
@@ -51,7 +55,7 @@ node{
     	}
       }
     )
-  }
+  }/*
   stage('Security Test'){
       //sh "cd /home/a_varun2/ && sh security.sh"
       //sh "cd /home/a_varun2/ && nohup sh wapiti-scan.sh &"                   
@@ -65,5 +69,5 @@ node{
 	  always {
           step([$class: 'DeploymentBuildMarker', environmentType: 'production'])
       }
-  }
+  }*/
 }
