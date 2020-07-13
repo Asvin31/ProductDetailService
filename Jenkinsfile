@@ -47,7 +47,7 @@ node{
 		writeFile file: "config.properties", text: props
 		withCredentials([usernamePassword(credentialsId: 'demo',passwordVariable: 'Suriakala$09', usernameVariable: 'asvin0903@gmail.com')]) {
 			sh('git add config.properties && git commit -m "BE-11:config"')
-                        sh('git push https://github.com/Asvin31/ProductDetailService.git')
+                        sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Asvin31/ProductDetailService.git')
                     }
 		error("Selenium Test Failed..")
 	}
